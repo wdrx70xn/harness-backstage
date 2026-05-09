@@ -1,24 +1,20 @@
-# NO-OP placeholder that always passes for other paths
-# This is here so that we're able to set the status check as required
-
 name: E2E Windows Void
-on:
+'on':
   pull_request:
     paths-ignore:
-      - 'yarn.lock'
-      - '.github/workflows/verify_e2e-windows.yml'
-      - 'packages/cli/**'
-      - 'packages/e2e-test/**'
-      - 'packages/create-app/**'
-
+    - yarn.lock
+    - .github/workflows/verify_e2e-windows.yml
+    - packages/cli/**
+    - packages/e2e-test/**
+    - packages/create-app/**
 jobs:
   noop:
-    runs-on: windows-2019
-
+    runs-on: windows-latest
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
-
+        node-version:
+        - 16.x
+        - 18.x
     name: E2E Windows ${{ matrix.node-version }}
     steps:
-      - run: echo NOOP
+    - run: echo NOOP
